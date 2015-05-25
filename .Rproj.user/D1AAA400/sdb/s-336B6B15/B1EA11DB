@@ -1,0 +1,17 @@
+{
+    "contents" : "#' It's plot single region by it's ID\n#'\n#' Plotting region by ID\n#'\n#' Build part of map by ID\n#' @param n - region's ID number,\n#' layer - SpatialPolygonsDataFrame file  \n#' @return Image of region\n#' @export\n\nplotRegbyID <- function(n,layer){\n  return(plot(map[map$ID_1 == n,]))\n}\n",
+    "created" : 1432591030380.000,
+    "dirty" : false,
+    "encoding" : "UTF8",
+    "folds" : "",
+    "hash" : "132475838",
+    "id" : "B1EA11DB",
+    "lastKnownWriteTime" : 1432591067,
+    "path" : "~/GitHub/rusmap/R/rusmap.R",
+    "project_path" : "R/rusmap.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
