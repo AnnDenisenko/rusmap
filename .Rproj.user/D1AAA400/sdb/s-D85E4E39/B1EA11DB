@@ -1,0 +1,17 @@
+{
+    "contents" : "#' It's plot single region by it's ID\n#'\n#' Plotting region by ID\n#'\n#' Build part of map by ID\n#' @param n - region's ID number,\n#' layer - SpatialPolygonsDataFrame file  \n#' @return Image of region\n#' @export\n\nplotRegbyID <- function(n,layer){\n  return(plot(map[map$ID_1 == n,]))\n}\n\n#' It's colour map by some parameter\n#'\n#' Colouring by parameter\n#'\n#' Map with graduate colour\n#' @param par - chosen parameter,\n#' layer_f - data frame file  \n#' @return Image of map with \n#' @export\n\ncolby <- function(par,layer){\n  ggplot(layer_f, aes(long, lat, group = group, fill = par)) +\n    geom_polygon() +\n    coord_equal() +\n    # For white lines\n    ggtitle(\"MAP by par\") + geom_polygon(data = layer_f, aes(long,lat), \n                                    fill=NA, \n                                    color = \"darkblue\",\n                                    size=0.1)+ \n    \n    # If we don't want text\n    theme(axis.line=element_blank(),   \n          axis.text.x=element_blank(), \n          axis.text.y=element_blank(),\n          axis.ticks=element_blank(),\n          axis.title.x=element_blank(),\n          axis.title.y=element_blank(),\n          legend.position=\"none\",\n          panel.background=element_blank())\n   + scale_fill_gradient(low = \"lightblue\", high = \"blue\")\n}",
+    "created" : 1432591030380.000,
+    "dirty" : true,
+    "encoding" : "UTF8",
+    "folds" : "",
+    "hash" : "3092063853",
+    "id" : "B1EA11DB",
+    "lastKnownWriteTime" : 1432674222,
+    "path" : "~/GitHub/rusmap/R/rusmap.R",
+    "project_path" : "R/rusmap.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
