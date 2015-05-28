@@ -22,10 +22,10 @@ plotRegbyID <- function(n,layer){
 #' @return Image of map with colourful selected regions
 #' @export
 
-findRegbyID <- function(vector, layer){
+findRegbyID <- function(vector, layer, colour = "red"){
   plot(layer)
   for(i in vector){
-    plot(layer[layer$ID_1 ==i,], col = "red", add=TRUE)
+    plot(layer[layer$ID_1 ==i,], col = colour, add=TRUE)
   }
 }
 

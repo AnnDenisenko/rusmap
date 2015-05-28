@@ -4,7 +4,7 @@
 \alias{findRegbyID}
 \title{Find regyons by ID}
 \usage{
-findRegbyID(vector, layer)
+findRegbyID(vector, layer, colour = "red")
 }
 \arguments{
 \item{vec}{- vector with IDs of regions,
