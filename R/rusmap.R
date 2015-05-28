@@ -11,6 +11,23 @@
 plotRegbyID <- function(n,layer){
   return(plot(map[map$ID_1 == n,]))
 }
+#' Find regyons by ID
+#'
+#' This function looking for regyons, defined by the ID, at the map. 
+#'
+#' Built several regyons by there IDs.
+#' @param vec - vector with IDs of regions,
+#' layer - SpatialPolygonsDataFrame file,
+#' colour - colour of region  
+#' @return Image of map with colourful selected regions
+#' @export
+
+findRegbyID <- function(vector, layer){
+  plot(layer)
+  for(i in vector){
+    plot(layer[layer$ID_1 ==i,], col = "red", add=TRUE)
+  }
+}
 
 #' It's colour map by some parameter
 #'
@@ -19,7 +36,7 @@ plotRegbyID <- function(n,layer){
 #' Map with graduate colour
 #' @param par - chosen parameter,
 #' layer_f - data frame file  
-#' @return Image of region
+#' @return Image of map with 
 #' @export
 
 colby <- function(par,layer){

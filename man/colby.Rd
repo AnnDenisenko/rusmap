@@ -11,7 +11,7 @@ colby(par, layer)
 layer_f - data frame file}
 }
 \value{
-Image of region
+Image of map with
 }
 \description{
 Colouring by parameter
