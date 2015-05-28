@@ -43,6 +43,8 @@ findRegbyID <- function(vector, layer, colour = "red"){
 #' layer - SpatialPolygonsDataFrame file 
 #' @return Image of map with 
 #' @export
+#' @examples map <- readOGR(dsn = "data", layer = "CorCoor")
+#' colby(par = ID_1, layer = map)
 
 colby <- function(par,layer){
   layer_f = fortify(layer)

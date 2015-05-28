@@ -19,4 +19,8 @@ Colouring by parameter
 \details{
 Map with graduate colour
 }
+\examples{
+map <- readOGR(dsn = "data", layer = "CorCoor")
+colby(par = ID_1, layer = map)
+}
 
