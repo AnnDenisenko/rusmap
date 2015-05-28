@@ -4,11 +4,11 @@
 \alias{colby}
 \title{It's colour map by some parameter}
 \usage{
-colby(par, layer)
+colby(par, layer_f)
 }
 \arguments{
 \item{par}{- chosen parameter,
-layer_f - data frame file}
+layer - SpatialPolygonsDataFrame file}
 }
 \value{
 Image of map with

@@ -35,11 +35,11 @@ findRegbyID <- function(vector, layer, colour = "red"){
 #'
 #' Map with graduate colour
 #' @param par - chosen parameter,
-#' layer_f - data frame file  
+#' layer - SpatialPolygonsDataFrame file 
 #' @return Image of map with 
 #' @export
 
-colby <- function(par,layer){
+colby <- function(par,layer_f){
   ggplot(layer_f, aes(long, lat, group = group, fill = par)) +
     geom_polygon() +
     coord_equal() +
