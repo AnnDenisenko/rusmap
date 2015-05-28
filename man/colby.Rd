@@ -4,7 +4,7 @@
 \alias{colby}
 \title{It's colour map by some parameter}
 \usage{
-colby(par, layer_f)
+colby(par, layer)
 }
 \arguments{
 \item{par}{- chosen parameter,

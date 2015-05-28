@@ -39,7 +39,8 @@ findRegbyID <- function(vector, layer, colour = "red"){
 #' @return Image of map with 
 #' @export
 
-colby <- function(par,layer_f){
+colby <- function(par,layer){
+  layer_f = fortify(layer)
   ggplot(layer_f, aes(long, lat, group = group, fill = par)) +
     geom_polygon() +
     coord_equal() +
