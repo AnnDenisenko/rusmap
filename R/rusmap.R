@@ -7,6 +7,8 @@
 #' layer - SpatialPolygonsDataFrame file  
 #' @return Image of region
 #' @export
+#' @examples map <- readOGR(dsn = "data", layer = "CorCoor")
+#' plotRegbyID(n=1, layer = map)
 
 plotRegbyID <- function(n,layer){
   return(plot(map[map$ID_1 == n,]))
@@ -21,6 +23,9 @@ plotRegbyID <- function(n,layer){
 #' colour - colour of region  
 #' @return Image of map with colourful selected regions
 #' @export
+#' @examples v <- c(1,2,3)
+#' map <- readOGR(dsn = "data", layer = "CorCoor")
+#' findRegbyID(vector = v, layer = map, colour = "green")
 
 findRegbyID <- function(vector, layer, colour = "red"){
   plot(layer)

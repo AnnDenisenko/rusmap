@@ -19,4 +19,8 @@ Plotting region by ID
 \details{
 Build part of map by ID
 }
+\examples{
+map <- readOGR(dsn = "data", layer = "CorCoor")
+plotRegbyID(n=1, layer = map)
+}
 

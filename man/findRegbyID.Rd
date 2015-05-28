@@ -20,4 +20,9 @@ This function looking for regyons, defined by the ID, at the map.
 \details{
 Built several regyons by there IDs.
 }
+\examples{
+v <- c(1,2,3)
+map <- readOGR(dsn = "data", layer = "CorCoor")
+findRegbyID(vector = v, layer = map, colour = "green")
+}
 
