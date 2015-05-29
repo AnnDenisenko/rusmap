@@ -18,21 +18,21 @@
 #' regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Third.jpeg", q = 200, x = 10)
 
 regions.matrix <- function(layer, regions, 
-                           outname = "matrix_with_regions.jpeg", q = 100,
-                           x = 5, y = 5){
+                           outname = "matrix_with_regions.jpeg", q = 1000,
+                           x = 3, y = 3){
   jpeg(filename = outname, width = 1200, height = 600, quality = q)  
   pushViewport(viewport(layout = grid.layout(x, y)))
   
   j=0
   
   map_f = fortify(layer)
-  map$id = as.character( c(0:88))
-  map_f = left_join(map_f, map@data) 
+  layer$id = as.character( c(0:88))
+  map_f = left_join(map_f, layer@data) 
   
   for (i in regions)
   {
     j=j+1
-    msk = subset(map_f, map$NAME_1==i)
+    msk = subset(map_f, NAME_1==i)
     cnames = aggregate(cbind(long, lat, group) ~ NAME_1, data=msk, 
                         FUN=function(x)mean(range(x)))
     

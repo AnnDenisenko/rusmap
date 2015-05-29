@@ -5,7 +5,7 @@
 \title{Several chosen regions}
 \usage{
 regions.matrix(layer, regions, outname = "matrix_with_regions.jpeg",
-  q = 100, x = 5, y = 5)
+  q = 1000, x = 3, y = 3)
 }
 \arguments{
 \item{layer}{- SpatialPolygonsDataFrame file.
