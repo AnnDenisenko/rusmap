@@ -13,6 +13,7 @@
 plotRegbyID <- function(n,layer){
   return(plot(map[map$ID_1 == n,]))
 }
+
 #' Find regyons by ID
 #'
 #' This function looking for regyons, defined by the ID, at the map. 

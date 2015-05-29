@@ -3,3 +3,4 @@
 export(colby)
 export(findRegbyID)
 export(plotRegbyID)
+export(regions.matrix)
