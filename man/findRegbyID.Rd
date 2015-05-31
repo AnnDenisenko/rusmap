@@ -22,7 +22,7 @@ Built several regyons by there IDs.
 }
 \examples{
 v <- c(1,2,3)
-map <- readOGR(dsn = "data", layer = "CorCoor")
+map <- readOGR(dsn = "data", layer = "map_1")
 findRegbyID(vector = v, layer = map, colour = "green")
 }
 

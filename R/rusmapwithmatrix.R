@@ -12,7 +12,7 @@
 #' @return JPEG file with chosen regions. 
 #' @export
 #' @examples 
-#' map <- readOGR(dsn = "data", layer = "CorCoor")
+#' map <- readOGR(dsn = "data", layer = "map_1")
 #' regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "First.jpeg")
 #' regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Second.jpeg", q = 50)
 #' regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Third.jpeg", q = 200, x = 10)
