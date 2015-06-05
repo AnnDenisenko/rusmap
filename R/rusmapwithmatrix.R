@@ -18,7 +18,7 @@
 #' regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Second.jpeg", q = 50)
 #' regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Third.jpeg", q = 200, x = 10)
 
-regions.matrix <- function(layer, regions, 
+reg.matrix <- function(layer, regions, 
                            outname = "matrix_with_regions.jpeg", q = 1000,
                            x = 3, y = 3, t=5){
   jpeg(filename = outname, width = 1200, height = 600, quality = q)  
@@ -80,7 +80,7 @@ regions.matrix <- function(layer, regions,
 #' regions.matrix(layer_2 = map_2, regions = c("Tuva", "Tomsk"), outname = "Second.jpeg", q = 50)
 #' regions.matrix(layer_2 = map_2, regions = c("Tuva", "Tomsk"), outname = "Third.jpeg", q = 200, x = 10)
 
-regions.matrix <- function(layer_2, regions, 
+reg.matrix.small <- function(layer_2, regions, 
                            outname = "matrix_with_regions.jpeg", q = 60000,
                            x = 3, y = 3, t = 2){
   jpeg(filename = outname, width = 1200, height = 600, quality = q)  
@@ -121,3 +121,4 @@ regions.matrix <- function(layer_2, regions,
   #Выгрузим картинку. 
   dev.off()
 }
+

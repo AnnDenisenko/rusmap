@@ -47,7 +47,7 @@ findRegbyID <- function(vector, layer, colour = "red"){
 #' @examples map <- readOGR(dsn = "data", layer = "map_1")
 #' colby(par = ID_1, layer = map)
 
-colby <- function(par,layer){
+colby <- function(par = ID_1,layer){
   layer_f = fortify(layer)
   ggplot(layer_f, aes(long, lat, group = group, fill = par)) +
     geom_polygon() +
