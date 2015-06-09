@@ -27,7 +27,7 @@ reg.matrix <- function(layer, regions,
   j=0
   
   map_f = fortify(layer)
-  layer$id = as.character( c(0:88))
+  layer$id = as.character( c(1:nrow(layer@data)))
   map_f = left_join(map_f, layer@data) 
   
   for (i in regions)
@@ -89,7 +89,7 @@ reg.matrix.small <- function(layer_2, regions,
   j=0
   
   map_f = fortify(layer_2)
-  layer_2$id = as.character( c(0:2448))
+  layer_2$id = as.character( c(1:nrow(layer_2@data)))
   map_f = left_join(map_f, layer_2@data) 
   
   for (i in regions)

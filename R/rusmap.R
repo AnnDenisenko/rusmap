@@ -35,37 +35,3 @@ findRegbyID <- function(vector, layer, colour = "red"){
   }
 }
 
-#' It's colour map by some parameter
-#'
-#' Colouring by parameter
-#'
-#' Map with graduate colour
-#' @param par - chosen parameter,
-#' layer - SpatialPolygonsDataFrame file 
-#' @return Image of map with 
-#' @export
-#' @examples map <- readOGR(dsn = "data", layer = "map_1")
-#' colby(par = ID_1, layer = map)
-
-colby <- function(par = ID_1,layer){
-  layer_f = fortify(layer)
-  ggplot(layer_f, aes(long, lat, group = group, fill = par)) +
-    geom_polygon() +
-    coord_equal() +
-    # For white lines
-    ggtitle("MAP by par") + geom_polygon(data = layer_f, aes(long,lat), 
-                                    fill=NA, 
-                                    color = "darkblue",
-                                    size=0.1)+ 
-    
-    # If we don't want text
-    theme(axis.line=element_blank(),   
-          axis.text.x=element_blank(), 
-          axis.text.y=element_blank(),
-          axis.ticks=element_blank(),
-          axis.title.x=element_blank(),
-          axis.title.y=element_blank(),
-          legend.position="none",
-          panel.background=element_blank())
-   + scale_fill_gradient(low = "lightblue", high = "blue")
-}
