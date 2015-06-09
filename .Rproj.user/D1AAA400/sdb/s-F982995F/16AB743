@@ -1,0 +1,17 @@
+{
+    "contents" : "#' It's colour map by some parameter\n#'\n#' Colouring by parameter\n#'\n#' Map with graduate colouring. \n#' @param \n#' layer - SpatialPolygonsDataFrame file \n#' \n#' data  - csv file with data.\n#' \n#' col  - colour of map.\n#' \n#' par - chosen parameter, as in data file. \n#' @return Image of map, shaded by choosen parameter.  \n#' @export\n#' @examples map <- readOGR(dsn = \"data\", layer = \"map_1\")\n#' pop <- read.csv(\"csv/population.csv\", sep = ';', encoding = \"UTF-16\")\n#' plotcolby(layer = map, data = pop, col = \"gold\", par = \"POP_2002\")\n\nplotcolby <- function(layer, data, col = \"gold\", par = \"POP_2002\"){\n  layer@data = full_join(data, layer@data)\n  \n  q = cut(layer@data[,par], breaks= c(quantile(layer@data[,par],\n                                                 probs = seq(from = 0,to = 1,by = 0.25))), include.lowest=T)\n  golds = paste0(col, seq(from = 1, to = 4, by = 1))\n  clr_gold = as.character(factor(q, labels = golds))\n  \n  plot(layer, col=clr_gold)\n}\n\n#' It's colour map by some parameter\n#'\n#' Colouring by parameter\n#'\n#' Map with graduate colour\n#' @param par - chosen parameter,\n#' layer - SpatialPolygonsDataFrame file \n#' @return Image of map with \n#' @export\n#' @examples map <- readOGR(dsn = \"data\", layer = \"map_1\")\n#' pop <- read.csv(\"csv/population.csv\", sep = ';', encoding = \"UTF-16\")\n#' ggplotcolby(layer = map, data = pop, par = \"POP_2002\")\n\nggplotcolby <- function(layer, data, par = \"POP_2002\"){\n  layer@data = full_join(data, layer@data)\n  layer_f = fortify(layer)\n  layer$id = as.character(1:nrow(layer@data))\n  layer_f = left_join(map_f, layer@data)\n    ggplot(layer_f, aes(long, lat, group = group, fill = layer_f[,par])) + \n      geom_polygon() +\n      coord_equal() +\n      geom_polygon(data = layer_f, aes(long,lat), \n                   fill=NA, \n                   color = \"darkblue\",\n                   size=0.1)+ \n    \n    # If we don't want text\n    theme(axis.line=element_blank(),   \n          axis.text.x=element_blank(), \n          axis.text.y=element_blank(),\n          axis.ticks=element_blank(),\n          axis.title.x=element_blank(),\n          axis.title.y=element_blank(),\n          legend.position=\"none\",\n          panel.background=element_blank())\n  + scale_fill_gradient(low = \"lightblue\", high = \"blue\")\n}\n",
+    "created" : 1433366562273.000,
+    "dirty" : false,
+    "encoding" : "UTF8",
+    "folds" : "",
+    "hash" : "3699656262",
+    "id" : "16AB743",
+    "lastKnownWriteTime" : 1433880682,
+    "path" : "~/GitHub/rusmap/R/rusmapwithcolour.R",
+    "project_path" : "R/rusmapwithcolour.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

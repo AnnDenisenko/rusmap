@@ -4,7 +4,7 @@
 \alias{ggplotcolby}
 \title{It's colour map by some parameter}
 \usage{
-ggplotcolby(layer, data, col = "gold", par = "POP_2002")
+ggplotcolby(layer, data, par = "POP_2002")
 }
 \arguments{
 \item{par}{- chosen parameter,
@@ -21,6 +21,7 @@ Map with graduate colour
 }
 \examples{
 map <- readOGR(dsn = "data", layer = "map_1")
-ggplotcolby(par = ID_1, layer = map)
+pop <- read.csv("csv/population.csv", sep = ';', encoding = "UTF-16")
+ggplotcolby(layer = map, data = pop, par = "POP_2002")
 }
 

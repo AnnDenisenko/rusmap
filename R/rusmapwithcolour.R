@@ -38,14 +38,15 @@ plotcolby <- function(layer, data, col = "gold", par = "POP_2002"){
 #' @return Image of map with 
 #' @export
 #' @examples map <- readOGR(dsn = "data", layer = "map_1")
-#' ggplotcolby(par = ID_1, layer = map)
+#' pop <- read.csv("csv/population.csv", sep = ';', encoding = "UTF-16")
+#' ggplotcolby(layer = map, data = pop, par = "POP_2002")
 
-ggplotcolby <- function(layer, data, col = "gold", par = "POP_2002"){
+ggplotcolby <- function(layer, data, par = "POP_2002"){
   layer@data = full_join(data, layer@data)
-  layer_f <- fortify(layer)
-  layer$id <- as.character(1:nrow(layer@data))
-  layer_f <- left_join(map_f, layer@data)
-    ggplot(map_f, aes(long, lat, group = group, fill = layer_f[,par])) + 
+  layer_f = fortify(layer)
+  layer$id = as.character(1:nrow(layer@data))
+  layer_f = left_join(map_f, layer@data)
+    ggplot(layer_f, aes(long, lat, group = group, fill = layer_f[,par])) + 
       geom_polygon() +
       coord_equal() +
       geom_polygon(data = layer_f, aes(long,lat), 
