@@ -53,6 +53,7 @@ reg.matrix <- function(layer, regions,
             axis.title.y=element_blank(),
             legend.position="none",
             panel.background=element_blank())
+      
     #Место на листе каждой картинки
     print(p, vp = vplayout(floor((j-1)/y)+1, (j)%%y+((j)%%y==0)*y))
   }

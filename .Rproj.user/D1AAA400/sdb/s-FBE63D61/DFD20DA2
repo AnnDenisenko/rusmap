@@ -1,0 +1,16 @@
+{
+    "contents" : "#' It's plot moskovskaya oblast' \n#'\n#' Combination of two or more layers of information on one map.\n#'\n#' Map of Moskovskaya oblast' with railway lines. \n#' @param layer - the initial SpatialPolygonsDataFrame file.\n#' \n#' add - vector of additional SpatialPolygonsDataFrame file. The size of each image should \n#' be comparable with size of the initial image. \n#'\n#' clr - vector with colours of all additional images.   \n#' @return Image of mosobl with addings. \n#' @export\n#' @examples  mosobl <- readOGR(\"mosobl\", \"boundary-polygon\")\n#' railway_mo <- readOGR(\"mosobl\", \"railway-line\")\n#' waterline_mo <- readOGR(\"mosobl\", \"water-line\")\n#' additional_files <- c(railway_mo, waterline_mo)\n#' colour = c(\"red\", \"blue\")\n#' combine(layer = mosobl, add = additional_files, clr = colour)\n\n\ncombine <- function(layer, add, clr){\n  layer_f = fortify(layer)\n  layer$id = as.character(1:nrow(layer@data))\n  layer_f = left_join(layer_f, layer@data)\n  \n  for(i in nrow(add)){\n    add_f[i]= fortify(add[i])\n    add[i]$id = as.character(1:nrow(add[i]@data))\n    add_f[i] = left_join(add_f[i], add[i]@data)\n  }\n  ggplot(layer_f, aes(long, lat, group = group, fill=NAME)) +  \n    \n    geom_polygon(data = layer_f, aes(long,lat), \n                 fill = NA, \n                 color = \"black\",\n                 size=0.1)+ \n    theme(axis.line=element_blank(),   \n          axis.text.x=element_blank(), \n          axis.text.y=element_blank(),\n          axis.ticks=element_blank(),\n          axis.title.x=element_blank(),\n          axis.title.y=element_blank(),\n          legend.position=\"none\",\n          panel.background=element_blank()) +\n    for(i in nrow(add)){\n      + geom_polygon(data = add_f[i], aes(long,lat), \n                     fill=NA, \n                     color = clr[i],\n                     size=0.1)\n    } \n}\n\n\n",
+    "created" : 1434281443303.000,
+    "dirty" : false,
+    "encoding" : "UTF8",
+    "folds" : "",
+    "hash" : "3164998217",
+    "id" : "DFD20DA2",
+    "lastKnownWriteTime" : 1434283561,
+    "path" : "~/GitHub/rusmap/R/mosoblwithadd.R",
+    "project_path" : "R/mosoblwithadd.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
