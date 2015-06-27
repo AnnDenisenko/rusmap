@@ -7,6 +7,8 @@
 #' 
 #' add - vector of additional SpatialPolygonsDataFrame file. The size of each image should 
 #' be comparable with size of the initial image. 
+#' 
+#' n - number of additional layers
 #'
 #' clr - vector with colours of all additional images.   
 #' @return Image of mosobl with addings. 
@@ -16,20 +18,15 @@
 #' waterline_mo <- readOGR("mosobl", "water-line")
 #' additional_files <- c(railway_mo, waterline_mo)
 #' colour = c("red", "blue")
-#' combine(layer = mosobl, add = additional_files, clr = colour)
+#' combine(layer = mosobl, add = additional_files, n = 2, clr = colour)
 
 
-combine <- function(layer, add, clr){
+combine <- function(layer, add, n, clr){
   layer_f = fortify(layer)
   layer$id = as.character(1:nrow(layer@data))
   layer_f = left_join(layer_f, layer@data)
   
-  for(i in nrow(add)){
-    add_f[i]= fortify(add[i])
-    add[i]$id = as.character(1:nrow(add[i]@data))
-    add_f[i] = left_join(add_f[i], add[i]@data)
-  }
-  ggplot(layer_f, aes(long, lat, group = group, fill=NAME)) +  
+  first <- ggplot(layer_f, aes(long, lat, group = group, fill=NAME)) +  
     
     geom_polygon(data = layer_f, aes(long,lat), 
                  fill = NA, 
@@ -42,13 +39,18 @@ combine <- function(layer, add, clr){
           axis.title.x=element_blank(),
           axis.title.y=element_blank(),
           legend.position="none",
-          panel.background=element_blank()) +
-    for(i in nrow(add)){
-      + geom_polygon(data = add_f[i], aes(long,lat), 
-                     fill=NA, 
-                     color = clr[i],
-                     size=0.1)
-    } 
+          panel.background=element_blank()) 
+  numb = nrow(add)
+  add_f=NULL
+  for(i in 1:n){
+    add_f[[i]]= fortify(add[[i]])
+    add[[i]]$id = as.character(1:nrow(add[[i]]@data))
+    add_f[[i]] = left_join(add_f[[i]], add[[i]]@data)
+    first = first + geom_polygon(data = add_f[[i]], aes(long,lat), 
+                                 fill=NA, 
+                                 color = clr[i],
+                                 size=0.1)
+  } 
+  return(first)
 }
-
 

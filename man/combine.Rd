@@ -4,13 +4,15 @@
 \alias{combine}
 \title{It's plot moskovskaya oblast'}
 \usage{
-combine(layer, add, clr)
+combine(layer, add, n, clr)
 }
 \arguments{
 \item{layer}{- the initial SpatialPolygonsDataFrame file.
 
 add - vector of additional SpatialPolygonsDataFrame file. The size of each image should
 be comparable with size of the initial image.
+
+n - number of additional layers
 
 clr - vector with colours of all additional images.}
 }
@@ -29,6 +31,6 @@ railway_mo <- readOGR("mosobl", "railway-line")
 waterline_mo <- readOGR("mosobl", "water-line")
 additional_files <- c(railway_mo, waterline_mo)
 colour = c("red", "blue")
-combine(layer = mosobl, add = additional_files, clr = colour)
+combine(layer = mosobl, add = additional_files, n = 2, clr = colour)
 }
 
