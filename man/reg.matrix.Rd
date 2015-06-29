@@ -9,7 +9,7 @@ reg.matrix(layer, regions, outname = "matrix_with_regions.jpeg", q = 1000,
 }
 \arguments{
 \item{layer}{- SpatialPolygonsDataFrame file.
-regions - a character vector naming one of more regions, as in layer.
+regions - a character vector naming one or more regions, as in layer.
 outname - name of JPEG file.
 q - quality of image.
 x - number of images in the vertical.
@@ -27,8 +27,8 @@ Each region will be imaged in single cell of matrix of a given size.
 }
 \examples{
 map <- readOGR(dsn = "data", layer = "map_1")
-regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "First.jpeg")
-regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Second.jpeg", q = 50)
-regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Third.jpeg", q = 200, x = 10)
+reg.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "First.jpeg")
+reg.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Second.jpeg", q = 50)
+reg.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Third.jpeg", q = 200, x = 10)
 }
 

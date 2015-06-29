@@ -4,7 +4,7 @@
 #'
 #' Each region will be imaged in single cell of matrix of a given size. 
 #' @param layer - SpatialPolygonsDataFrame file.
-#' regions - a character vector naming one of more regions, as in layer.
+#' regions - a character vector naming one or more regions, as in layer.
 #' outname - name of JPEG file.
 #' q - quality of image.  
 #' x - number of images in the vertical.
@@ -14,9 +14,9 @@
 #' @export
 #' @examples 
 #' map <- readOGR(dsn = "data", layer = "map_1")
-#' regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "First.jpeg")
-#' regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Second.jpeg", q = 50)
-#' regions.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Third.jpeg", q = 200, x = 10)
+#' reg.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "First.jpeg")
+#' reg.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Second.jpeg", q = 50)
+#' reg.matrix(layer = map, regions = c("Tuva", "Kemerovo"), outname = "Third.jpeg", q = 200, x = 10)
 
 reg.matrix <- function(layer, regions, 
                            outname = "matrix_with_regions.jpeg", q = 1000,
@@ -67,7 +67,7 @@ reg.matrix <- function(layer, regions,
 #'
 #' Each region will be imaged in single cell of matrix of a given size. 
 #' @param layer_2 - SpatialPolygonsDataFrame file with smaller administrative division.
-#' regions - a character vector naming one of more regions, as in layer_2.
+#' regions - a character vector naming one or more regions, as in layer_2.
 #' outname - name of JPEG file.
 #' q - quality of image.  
 #' x - number of images in the vertical.
@@ -76,10 +76,10 @@ reg.matrix <- function(layer, regions,
 #' @return JPEG file with chosen regions. 
 #' @export
 #' @examples 
-#' map <- readOGR(dsn = "data", layer_2 = "map_2")
-#' regions.matrix(layer_2 = map_2, regions = c("Tuva", "Tomsk"), outname = "First.jpeg")
-#' regions.matrix(layer_2 = map_2, regions = c("Tuva", "Tomsk"), outname = "Second.jpeg", q = 50)
-#' regions.matrix(layer_2 = map_2, regions = c("Tuva", "Tomsk"), outname = "Third.jpeg", q = 200, x = 10)
+#' map_2 <- readOGR(dsn = "data", layer = "map_2")
+#' reg.matrix.small(layer_2 = map_2, regions = c("Tuva", "Tomsk"), outname = "First.jpeg")
+#' reg.matrix.small(layer_2 = map_2, regions = c("Tuva", "Tomsk"), outname = "Second.jpeg", q = 50)
+#' reg.matrix.small(layer_2 = map_2, regions = c("Tuva", "Tomsk"), outname = "Third.jpeg", q = 200, x = 10)
 
 reg.matrix.small <- function(layer_2, regions, 
                            outname = "matrix_with_regions.jpeg", q = 60000,
